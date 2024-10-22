@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BookingApp_v1._0.Models.Profile>
+
+@{
+    ViewBag.Title = "All Profiles";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All User Profiles</h2>
+
+    <div class="table-responsive">
+        <table id="profilesTable" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Profile ID</th>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>User Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var profile in Model)
+                {
+                    <tr>
+                        <td>@profile.ProfileId</td>
+                        <td>@profile.Name</td>
+                        <td>@(profile.DateOfBirth.HasValue ? profile.DateOfBirth.Value.ToString("d") : "N/A")</td>
+                        <td>@profile.Contact</td>
+                        <td>@profile.Address</td>
+                        <td>@profile.ApplicationUser.UserName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#profilesTable').DataTable({
+                searching: true,
+                paging: true,
+                ordering: true,
+                lengthMenu: [5, 10, 25, 50, 100],
+                pageLength: 10
+            });
+        });
+    </script>
+}

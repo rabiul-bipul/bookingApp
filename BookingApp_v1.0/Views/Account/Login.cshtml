@@ -1,0 +1,63 @@
+﻿@using BookingApp_v1._0.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">@ViewBag.Title</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Reduced column width for better form alignment -->
+            <section id="loginForm" class="card p-5 shadow">
+                <!-- Added padding and shadow for better aesthetics -->
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="text-center mb-4">Use a local account to log in.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group mb-3">
+                        <!-- Increased margin for better spacing -->
+                        @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter your email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group mb-3">
+                        @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group form-check mb-4 text-center">
+                        <!-- Centered checkbox and label -->
+                        <div class="custom-control custom-checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input", id = "rememberMe" })
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "custom-control-label", @for = "rememberMe" })
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" value="Log in" class="btn btn-dark btn-lg w-50" /> <!-- Widened the button for better alignment -->
+                    </div>
+
+                    <p class="text-center mt-3">
+                        <!-- Added margin for spacing -->
+                        @Html.ActionLink("Register as a new user", "Register", null, new { @class = "text-primary" }) <!-- Styled the link -->
+                    </p>
+                    @* Uncomment this when account confirmation is enabled
+                        <p class="text-center mt-2">
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "text-secondary" })
+                        </p>*@
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

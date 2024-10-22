@@ -1,0 +1,186 @@
+﻿@model IEnumerable<BookingApp_v1._0.Models.Package>
+
+@{
+    ViewBag.Title = "Available Packages";
+}
+
+<div class="jumbotron text-center">
+    <h1>Welcome to the Booking App!</h1>
+    <p class="lead">Find the best packages for your travel needs.</p>
+</div>
+
+<div class="container">
+    <h2 class="text-success mb-4">Top Packages</h2>
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @{
+                var packageList = Model.ToList(); // Convert to list so you can access packages by index
+                var totalPackages = packageList.Count;
+            }
+
+            @if (totalPackages > 0)
+            {
+                <!-- Display first package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://thumbs.dreamstime.com/z/adventure-travel-tourism-hike-people-concept-group-smiling-friends-backpacks-map-outdoors-hiking-127569517.jpg"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[0].PackageName</h5>
+                            <p class="card-text">@packageList[0].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[0].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[0].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[0].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[0].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[0].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (totalPackages > 1)
+            {
+                <!-- Display second package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://www.trolleytours.com/wp-content/uploads/2016/07/trolley-tours-of-key-west.jpg"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[1].PackageName</h5>
+                            <p class="card-text">@packageList[1].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[1].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[1].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[1].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[1].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[1].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (totalPackages > 2)
+            {
+                <!-- Display third package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/08/20113359/Malfy-Gin-2-666x416.jpg"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[2].PackageName</h5>
+                            <p class="card-text">@packageList[2].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[2].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[2].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[2].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[2].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[2].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (totalPackages > 3)
+            {
+                <!-- Display fourth package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://th.bing.com/th/id/OIP.WfaBCnEFb-Xh568EIBeonwHaEo?rs=1&pid=ImgDetMain"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[3].PackageName</h5>
+                            <p class="card-text">@packageList[3].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[3].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[3].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[3].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[3].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[3].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (totalPackages > 4)
+            {
+                <!-- Display fifth package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://miviaje.com/wp-content/uploads/2019/01/ciervos-sundarbans.jpg"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[4].PackageName</h5>
+                            <p class="card-text">@packageList[4].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[4].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[4].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[4].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[4].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[4].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (totalPackages > 5)
+            {
+                <!-- Display sixth package -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://avada.website/tour-operator/wp-content/uploads/sites/169/2022/06/tour-operator-hero-1.jpg"
+                             class="card-img-top"
+                             alt="Package Image"
+                             width="300"
+                             height="250"
+                             style="object-fit: cover;" />
+                        <div class="card-body">
+                            <h5 class="card-title">@packageList[5].PackageName</h5>
+                            <p class="card-text">@packageList[5].Details</p>
+                            <p class="font-weight-bold">Price: @packageList[5].Price</p>
+                            <p class="font-weight-bold">Expire Date: @packageList[5].ExpireDate.ToString("MM/dd/yyyy")</p>
+                            <p class="font-weight-bold">Hotel: @packageList[5].Hotel.HotelName</p>
+                            <p class="font-weight-bold">Location: @packageList[5].Location.LocationName</p>
+                            <a href="@Url.Action("Details", "Package", new { id = packageList[5].PackageId })" class="btn btn-primary">Book</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-center">No packages available at the moment.</p>
+    }
+</div>
+
+
+<div class="text-center mb-4">
+    <a href="@Url.Action("ViewAllPackages", "Home")" class="btn btn-success">View All Packages</a>
+</div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+}
+
+

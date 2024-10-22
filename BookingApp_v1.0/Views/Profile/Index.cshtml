@@ -1,0 +1,33 @@
+﻿@model BookingApp_v1._0.Models.Profile
+
+@{
+    ViewBag.Title = "My Profile";
+}
+
+<h2>My Profile</h2>
+
+<div>
+    <h4>Name: @(Model?.Name ?? "Not provided")</h4>
+    <p>Date of Birth: @(Model?.DateOfBirth.HasValue == true ? Model.DateOfBirth.Value.ToShortDateString() : "Not provided")</p>
+    <p>Contact: @(Model?.Contact ?? "Not provided")</p>
+    <p>Address: @(Model?.Address ?? "Not provided")</p>
+
+   @* <p>
+
+        @if (!string.IsNullOrEmpty(Model?.ProfilePicture))
+        {
+            <img src="@Model.ProfilePicture" alt="Profile Picture" style="max-width:200px;" />
+        }
+        else
+        {
+            <span>No profile picture available.</span>
+        }
+    </p>*@
+
+    <p>
+        @Html.ActionLink("Edit Profile", "Edit", new { id = Model.ProfileId }, new { @class = "btn btn-primary" })
+    </p>
+</div>
+
+<hr />
+<a class="btn btn-default" href="@Url.Action("Index", "Home")">Back to Home</a>

@@ -1,0 +1,56 @@
+﻿@model BookingApp_v1._0.Models.Package
+
+@{
+    ViewBag.Title = "Package Details";
+}
+
+<div class="container">
+    <h2 class="text-center mb-4">Package Details</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.PackageName</h5>
+            <p class="card-text"><strong>Details:</strong> @Model.Details</p>
+            <p class="font-weight-bold">Price: @Model.Price</p>
+            <p class="font-weight-bold">Available Till : @Model.ExpireDate.ToString("MM/dd/yyyy")</p>
+            
+            <p class="font-weight-bold">Package Available: @Model.Stock</p>
+
+            <h6 class="mt-4">Hotel Details:</h6>
+            @if (Model.Hotel != null)
+            {
+                <p class="font-weight-bold">Hotel Name: @Model.Hotel.HotelName</p>
+                <p class="font-weight-bold">Hotel Website: <a class="font-weight-bold">@Model.Hotel.HotelWebsite</a></p>
+                
+            }
+            else
+            {
+                <p>No hotel details available.</p>
+            }
+
+            <h6 class="mt-4">Location Details:</h6>
+            @if (Model.Location != null)
+            {
+                <p class="font-weight-bold">Location Name: @Model.Location.LocationName</p>
+                <p class="font-weight-bold">Location Description: <a class="font-weight-bold">@Model.Location.Description</a></p>
+            }
+            else
+            {
+                <p>No location details available.</p>
+            }
+
+            <div class="mt-4">
+                <a href="@Url.Action("ViewAllPackages", "Home")" class="btn btn-secondary">Back to Packages</a>
+                 
+                <a href="@Url.Action("Create", "Invoice", new { PackageId= Model.PackageId })" class="btn btn-primary">Confirm Booking</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+}

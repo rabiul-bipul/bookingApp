@@ -1,0 +1,61 @@
+﻿@model BookingApp_v1._0.Models.Invoice
+
+@{
+    ViewBag.Title = "Invoice Details";
+}
+
+<div class="container">
+    <h2 class="text-center mb-4">Invoice Details</h2>
+    
+    <div class="card mx-auto" style="max-width: 600px;">
+
+        <!-- Center the card -->
+        <div class="card-body text-center">
+            <h4 style="color:red">Please Keep your Invoice</h4>
+            <!-- Center the card body -->
+            <h5 class="card-title">Invoice ID: @Model.InvoiceId</h5>
+            <p class="card-text"><strong>Booking Date:</strong> @Model.BookingDate.ToString("MM/dd/yyyy")</p>
+            <p class="card-text"><strong>Arrival Date:</strong> @Model.ArrivalDate.ToString("MM/dd/yyyy")</p>
+            <p class="font-weight-bold">Total Quantity: @Model.Quantity.ToString()</p>
+            <p class="font-weight-bold">Total Amount: @Model.TotalAmount.ToString("C")</p>
+            <p class="font-weight-bold">Payment Method: @Model.PaymentMethod</p>
+
+            <h6 class="mt-4">Profile Details:</h6>
+            @if (Model.Profile != null)
+            {
+                <p class="font-weight-bold">Profile Name: @Model.Profile.Name</p>
+                <p class="font-weight-bold">Address: @Model.Profile.Address</p>
+                <p class="font-weight-bold">Contact Number: @Model.Profile.Contact</p>
+            }
+            else
+            {
+                <p>No profile details available.</p>
+            }
+
+            <h6 class="mt-4">Package Details:</h6>
+            @if (Model.Package != null)
+            {
+                <p class="font-weight-bold">Package Name: @Model.Package.PackageName</p>
+                <p class="font-weight-bold">Price: @Model.Package.Price.ToString("C")</p>
+                @*<p class="font-weight-bold">Stock Remaining: @Model.Package.Stock</p>*@
+            }
+            else
+            {
+                <p>No package details available.</p>
+            }
+
+            <div class="mt-4">
+                <a href="@Url.Action("ViewAllPackages", "Home")" class="btn btn-secondary">Back</a>
+                <a href="@Url.Action("GeneratePDF", "Invoice", new { id = Model.InvoiceId })" class="btn btn-primary">Generate PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+}

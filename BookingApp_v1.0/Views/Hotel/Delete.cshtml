@@ -1,0 +1,53 @@
+﻿@model BookingApp_v1._0.Models.Hotel
+
+@{
+    ViewBag.Title = "Delete Hotel";
+}
+
+
+<h2>Delete Hotel</h2>
+
+
+<div>
+    
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @Html.ValidationSummary(true)
+        </div>
+    }
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HotelName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelWebsite)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HotelWebsite)
+        </dd>
+        <dt>
+            Location
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.LocationName)
+        </dd>
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Delete" class="btn btn-danger" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

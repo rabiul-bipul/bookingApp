@@ -1,0 +1,183 @@
+﻿@model IEnumerable<BookingApp_v1._0.Models.Invoice>
+
+@using System.Globalization
+@{
+    ViewBag.Title = "Invoices and Statistics";
+}
+
+
+
+<!-- Statistics Section -->
+<h2>Dashboard</h2>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+@*<div class="statistics-totals">
+        <h3>Total Earnings</h3>
+        <ul>
+            <li><strong>Daily Total Amount:</strong> @ViewBag.DailyTotal.ToString("C", CultureInfo.CurrentCulture)</li>
+            <li><strong>Monthly Total Amount:</strong> @ViewBag.MonthlyTotal.ToString("C", CultureInfo.CurrentCulture)</li>
+            <li><strong>Yearly Total Amount:</strong> @ViewBag.YearlyTotal.ToString("C", CultureInfo.CurrentCulture)</li>
+            <li><strong>Lifetime Total Amount:</strong> @ViewBag.LifetimeTotal.ToString("C", CultureInfo.CurrentCulture)</li>
+        </ul>
+    </div>*@
+
+<div class="statistics-totals" style="margin: 20px 0;">
+    <h3>Total Earnings</h3>
+    <br />
+    <div class="totals-list" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="total-item" style="flex: 1; margin-right: 20px;">
+            <strong>Daily Total Amount:</strong> @ViewBag.DailyTotal.ToString("C", CultureInfo.CurrentCulture)
+        </div>
+        <div class="total-item" style="flex: 1; margin-right: 20px;">
+            <strong>Monthly Total Amount:</strong> @ViewBag.MonthlyTotal.ToString("C", CultureInfo.CurrentCulture)
+        </div>
+        <div class="total-item" style="flex: 1; margin-right: 20px;">
+            <strong>Yearly Total Amount:</strong> @ViewBag.YearlyTotal.ToString("C", CultureInfo.CurrentCulture)
+        </div>
+        <div class="total-item" style="flex: 1; margin-right: 0;">
+            <strong>Lifetime Total Amount:</strong> @ViewBag.LifetimeTotal.ToString("C", CultureInfo.CurrentCulture)
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <!-- Daily Chart -->
+        <div class="col-md-4">
+            <h3>Daily Total Amount</h3>
+            <canvas id="dailyChart"></canvas>
+        </div>
+
+        <!-- Monthly Chart -->
+        <div class="col-md-4">
+            <h3>Monthly Total Amount</h3>
+            <canvas id="monthlyChart"></canvas>
+        </div>
+
+        <!-- Yearly Chart -->
+        <div class="col-md-4">
+            <h3>Yearly Total Amount</h3>
+            <canvas id="yearlyChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Daily Chart
+    var ctxDaily = document.getElementById('dailyChart').getContext('2d');
+    var dailyChart = new Chart(ctxDaily, {
+        type: 'bar',
+        data: {
+            labels: ['Daily Total'],
+            datasets: [{
+                label: 'Daily Invoice Total',
+                data: [@ViewBag.DailyTotal],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Monthly Chart
+    var ctxMonthly = document.getElementById('monthlyChart').getContext('2d');
+    var monthlyChart = new Chart(ctxMonthly, {
+        type: 'bar',
+        data: {
+            labels: ['Monthly Total'],
+            datasets: [{
+                label: 'Monthly Invoice Total',
+                data: [@ViewBag.MonthlyTotal],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Yearly Chart
+    var ctxYearly = document.getElementById('yearlyChart').getContext('2d');
+    var yearlyChart = new Chart(ctxYearly, {
+        type: 'bar',
+        data: {
+            labels: ['Yearly Total'],
+            datasets: [{
+                label: 'Yearly Invoice Total',
+                data: [@ViewBag.YearlyTotal],
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<br />
+<hr />
+
+<h2>Invoice List</h2>
+
+<table id="invoicesTable" class="table">
+    <thead>
+        <tr>
+            <th>Invoice ID</th>
+            <th>Profile Name</th>
+            <th>Package Name</th>
+            <th>Booking Date</th>
+            <th>Arrival Date</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>@invoice.InvoiceId</td>
+                <td>@invoice.Profile.Name</td>
+                <td>@invoice.Package.PackageName</td>
+                <td>@invoice.BookingDate.ToString("MM/dd/yyyy")</td>
+                <td>@invoice.ArrivalDate.ToString("MM/dd/yyyy")</td>
+                <td>@invoice.TotalAmount.ToString("C")</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = invoice.InvoiceId }) |
+                    @Html.ActionLink("Generate PDF", "GeneratePDF", new { id = invoice.InvoiceId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- DataTables CSS and JS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#invoicesTable').DataTable();
+    });
+</script>

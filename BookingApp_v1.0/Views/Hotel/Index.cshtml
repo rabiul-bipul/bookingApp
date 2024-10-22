@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BookingApp_v1._0.Models.Hotel>
+
+@{
+    ViewBag.Title = "Hotels";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Hotels</h2>
+
+    <!-- Display Success or Error Alerts for Create, Edit, Delete actions -->
+    @if (TempData["HotelCreate"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>@TempData["HotelCreate"]</strong>
+        </div>
+    }
+
+    @if (TempData["HotelEdit"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>@TempData["HotelEdit"]</strong>
+        </div>
+    }
+
+    @if (TempData["HotelDelete"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>@TempData["HotelDelete"]</strong>
+        </div>
+    }
+
+    <!-- Button to Create a New Hotel -->
+    <div class="mb-3">
+        @Html.ActionLink("Create New Hotel", "Create", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+
+    <!-- Compact Hotel Table -->
+    <div class="table-responsive">
+        <table id="hotelsTable" class="table table-sm table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center" style="width: 5%;">SL No</th> <!-- Adjusted width -->
+                    <th style="width: 30%;">Hotel Name</th> <!-- Adjusted width -->
+                    <th style="width: 25%;">Website</th> <!-- Adjusted width -->
+                    <th style="width: 25%;">Location</th> <!-- Adjusted width -->
+                    <th class="text-center" style="width: 15%;">Options</th> <!-- Adjusted width -->
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    var hotel = Model.ElementAt(i); // Get the current hotel
+                    <tr>
+                        <td class="text-center">@(i + 1)</td> <!-- Centered and adjusted width -->
+                        <td style="word-wrap: break-word;">@Html.DisplayFor(modelItem => hotel.HotelName)</td> <!-- Word wrap for long names -->
+                        <td>@Html.DisplayFor(modelItem => hotel.HotelWebsite)</td> <!-- Adjusted width -->
+                        <td style="word-wrap: break-word;">@Html.DisplayFor(modelItem => hotel.Location.LocationName)</td> <!-- Word wrap for long names -->
+                        <td class="text-center">
+                            @Html.ActionLink("Edit", "Edit", new { id = hotel.HotelId }, new { @class = "btn btn-warning btn-sm" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = hotel.HotelId }, new { @class = "btn btn-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#hotelsTable').DataTable({
+                searching: true,
+                paging: true,
+                ordering: true,
+                lengthMenu: [5, 10, 25, 50, 100],
+                pageLength: 10
+            });
+        });
+    </script>
+}

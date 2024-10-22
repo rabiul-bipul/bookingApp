@@ -1,0 +1,114 @@
+﻿@model BookingApp_v1._0.Models.Package
+
+@{
+    ViewBag.Title = "Edit Package";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-lg-6 col-md-8">
+        <div class="p-4 bg-white border rounded shadow-sm">
+            <h3 class="text-center mb-4">Edit Package</h3>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Hidden field for PackageId -->
+                @Html.HiddenFor(model => model.PackageId)
+
+                <!-- Validation Summary -->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })
+
+                <!-- Package Name Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.PackageName, new { @class = "form-label fw-bold" })
+                    @Html.EditorFor(model => model.PackageName, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter package name"
+                        }
+                    })
+                    @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Package Details Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bold" })
+                    @Html.EditorFor(model => model.Details, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter package details",
+                            rows = 4
+                        }
+                    })
+                    @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Expire Date Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.ExpireDate, new { @class = "form-label fw-bold" })
+                    @Html.TextBox("ExpireDate", Model.ExpireDate.ToString("yyyy-MM-dd"), new
+                    {
+                        @class = "form-control",
+                        placeholder = "Select expiration date",
+                        type = "date"
+                    })
+                    @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Price Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.Price, new { @class = "form-label fw-bold" })
+                    @Html.EditorFor(model => model.Price, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter package price"
+                        }
+                    })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Stock Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.Stock, new { @class = "form-label fw-bold" })
+                    @Html.EditorFor(model => model.Stock, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter available stock"
+                        }
+                    })
+                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Hotel Dropdown -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.HotelId, "Hotel", new { @class = "form-label fw-bold" })
+                    @Html.DropDownList("HotelId", null, "Select Hotel", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HotelId, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Save Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">Save</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4 ml-2" onclick="window.history.back();">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

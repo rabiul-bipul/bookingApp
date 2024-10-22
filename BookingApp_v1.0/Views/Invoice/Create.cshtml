@@ -1,0 +1,86 @@
+﻿@model BookingApp_v1._0.Models.Invoice
+
+@{
+    ViewBag.Title = "Create Invoice";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create Invoice</h2>
+
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+            <div class="validation-summary-errors">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+            @using (Html.BeginForm("Create", "Invoice", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Hidden field for ProfileId -->
+                @Html.HiddenFor(model => model.ProfileId)
+
+                <!-- Hidden field for PackageId -->
+                @Html.HiddenFor(model => model.PackageId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", @id = "quantity" })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ArrivalDate, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.ArrivalDate, new { htmlAttributes = new { @class = "form-control", type = "datetime-local" } })
+                        @Html.ValidationMessageFor(model => model.ArrivalDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.PaymentMethod,
+                        new SelectList(new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Card", Value = "Card" },
+                            new SelectListItem { Text = "Mobile Banking", Value = "Mobile Banking" }
+                        }, "Value", "Text"),
+                        "Select Payment Method",
+                        new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Total Amount", htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBox("TotalAmount", "{0:C}", new { @class = "form-control", @readonly = "readonly", @id = "totalAmount" })
+                    @Html.ValidationMessage("TotalAmount", "", new { @class = "text-danger" })
+                </div>
+
+                <br />
+                <div class="form-group text-center">
+                    <input type="submit" value="Pay Now" class="btn btn-success btn-lg" />
+                    @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn btn-secondary btn-lg" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    const quantityInput = document.getElementById("quantity");
+    const totalAmountInput = document.getElementById("totalAmount");
+    const packagePrice = @Model.TotalAmount; // Set this to the package price
+
+    quantityInput.addEventListener("input", function () {
+        const quantity = parseInt(quantityInput.value) || 0;
+        totalAmountInput.value = (packagePrice * quantity).toFixed(2); // Update total amount
+    });
+</script>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+}

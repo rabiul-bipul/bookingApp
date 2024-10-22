@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|c:\\users\\dell\\downloads\\bookingapp_v1.0\\bookingapp_v1.0\\controllers\\api\\packagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|solutionrelative:controllers\\api\\packagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\models\\hotel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|solutionrelative:models\\hotel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\views\\package\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|solutionrelative:views\\package\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F030EF70-A4C1-4502-B5A7-A89DC572E922}|BookingApp_v1.0.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAALcAAAAAAAAAAADwv/ABAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T14:48:14.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PackagesController.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Controllers\\API\\PackagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\API\\PackagesController.cs",
+              "ToolTip": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Controllers\\API\\PackagesController.cs",
+              "RelativeToolTip": "Controllers\\API\\PackagesController.cs",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAuwKcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T08:04:38.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hotel.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Models\\Hotel.cs",
+              "RelativeDocumentMoniker": "Models\\Hotel.cs",
+              "ToolTip": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Models\\Hotel.cs",
+              "RelativeToolTip": "Models\\Hotel.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAYwBsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T08:03:50.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Views\\Package\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Package\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Views\\Package\\Details.cshtml",
+              "RelativeToolTip": "Views\\Package\\Details.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-30T07:03:48.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Dell\\Downloads\\BookingApp_v1.0\\BookingApp_v1.0\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-30T05:37:06.161Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BookingApp_v1._0.Models.Package>
+
+@{
+    ViewBag.Title = "All Packages";
+}
+
+<h2 class="text-center">Available Packages</h2>
+
+<div class="container">
+    <!-- Search Bar -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by Package Name, Hotel Name, Location, or Price..." />
+        </div>
+    </div>
+
+    <!-- Packages Grid -->
+    <div class="row" id="packageGrid">
+        @foreach (var package in Model)
+        {
+            <div class="col-md-4 mb-4 package-card"
+                 data-package-name="@package.PackageName.ToLower()"
+                 data-hotel-name="@package.Hotel.HotelName.ToLower()"
+                 data-location-name="@package.Location.LocationName.ToLower()"
+                 data-price="@package.Price">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title package-name">@package.PackageName</h5>
+                        <p class="card-text">@package.Details</p>
+                        <p class="font-weight-bold">Price: @package.Price.ToString("C")</p>
+                        <p class="font-weight-bold">Expire Date: @package.ExpireDate.ToString("MM/dd/yyyy")</p>
+                        <p class="font-weight-bold">Hotel: @package.Hotel.HotelName</p>
+                        <p class="font-weight-bold">Location: @package.Location.LocationName</p>
+                        <a href="@Url.Action("Details", "Package", new { id = package.PackageId })" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Function to filter packages based on search input
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('#packageGrid .package-card').filter(function () {
+                    var packageName = $(this).data('package-name');
+                    var hotelName = $(this).data('hotel-name');
+                    var locationName = $(this).data('location-name');
+                    var price = $(this).data('price').toString();
+
+                    // Check if the input value matches any of the data attributes
+                    $(this).toggle(
+                        packageName.indexOf(value) > -1 ||
+                        hotelName.indexOf(value) > -1 ||
+                        locationName.indexOf(value) > -1 ||
+                        price.indexOf(value) > -1
+                    );
+                });
+            });
+        });
+    </script>
+}

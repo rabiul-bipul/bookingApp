@@ -1,0 +1,56 @@
+﻿@model BookingApp_v1._0.Models.Hotel
+
+@{
+    ViewBag.Title = "Create Hotel";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="col-lg-5 col-md-7">
+        <h2 class="text-center mb-4">Create New Hotel</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="p-4 bg-light border rounded shadow-sm">
+                <h4 class="mb-3">Hotel Details</h4>
+                <hr />
+
+                <!-- Validation Summary -->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })
+
+                <!-- Hotel Name Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.HotelName, new { @class = "form-label fw-bold" })
+                    <div class="d-flex justify-content-center">
+                        @Html.EditorFor(model => model.HotelName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter hotel name" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.HotelName, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Hotel Website Input -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.HotelWebsite, new { @class = "form-label fw-bold" })
+                    <div class="d-flex justify-content-center">
+                        @Html.EditorFor(model => model.HotelWebsite, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter hotel website URL" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.HotelWebsite, "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Location Dropdown -->
+                <div class="form-group mb-3">
+                    @Html.LabelFor(model => model.LocationId, "Location", new { @class = "form-label fw-bold" })
+                    <div class="d-flex justify-content-center">
+                        @Html.DropDownList("LocationId", null, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessage("LocationId", "", new { @class = "text-danger small" })
+                </div>
+
+                <!-- Buttons -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">Create</button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-secondary btn-lg px-4">Back to List</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
