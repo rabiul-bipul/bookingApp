@@ -1,7 +1,21 @@
 # Travel Booking Application
+
+---
+## Developer Information
+### Team devDynamos
+
+| **Name**               | **Email**                                  | **Facebook**                                                                                      | **LinkedIn**                                            | **Codeforces**                                               |
+|------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------|---------------------------------------------------------|--------------------------------------------------------------|
+| Rabiul Islam Bipul      | rabiulislambipul.per@gmail.com             | [Facebook Profile](https://www.facebook.com/rabiulbipul/)                                          | [LinkedIn](https://www.linkedin.com/in/)                | [Codeforces](https://codeforces.com/profile/rabiulbipul)      |
+| MD. Jonayat Hossain     | jonayathossainooo@gmail.com                | [Facebook Profile](https://www.facebook.com/profile.php?id=100014249430261)                        | [LinkedIn](https://www.linkedin.com/in/jonayat-hossain-2152a721a) | [Codeforces](https://codeforces.com/profile/Jonayat_Hossain)   |
+
+---
  
 ## Overview
 This project simplifies the process of traveling by allowing users to book hotels at preferred locations through packages. It offers an efficient, user-friendly platform for managing travel bookings, ensuring a seamless experience for travelers.
+
+## Demonstration Video
+Watch the [Demonstration Video](https://www.youtube.com/watch?v=YBWl9S_u53Q) to see how the Travel Booking Application works.
  
 ## Main Features
 - **Package Selection**: Customers can choose from pre-designed travel packages or create custom packages based on their preferences.
@@ -129,3 +143,7 @@ Designed using the **Code-First Approach** in Entity Framework.
 - **Invoices**: Stores booking and payment details (`InvoiceId`, `ProfileId`, etc.).
  
 ---
+
+
+
+ 
